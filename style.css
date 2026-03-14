@@ -266,12 +266,12 @@ h1 {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 1.5rem;
     text-decoration: none;
     color: inherit;
     transition: all 0.25s;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .project-card:hover {
@@ -281,25 +281,63 @@ h1 {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
+.project-thumb {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.project-card:hover .project-thumb img {
+    transform: scale(1.05);
+}
+
+.project-thumb-icon {
+    padding: 2rem;
+}
+
+.project-thumb-icon svg {
+    width: 56px;
+    height: 56px;
+    opacity: 0.5;
+}
+
+.project-info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .project-card h3 {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     color: var(--text);
 }
 
 .project-card p {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.5;
     flex: 1;
 }
 
 .project-meta {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
-    font-size: 0.8rem;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 
