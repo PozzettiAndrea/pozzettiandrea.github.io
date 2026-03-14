@@ -36,9 +36,9 @@ header {
 }
 
 nav {
-    max-width: 1100px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,9 +72,9 @@ nav {
 main {
     position: relative;
     z-index: 1;
-    max-width: 1100px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
 }
 
 section {
@@ -195,15 +195,59 @@ h1 {
 .project-sidebar {
     position: fixed;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 180px;
+    top: 0;
+    height: 100vh;
+    width: 40px;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
+    padding-top: 0;
     z-index: 200;
+    justify-content: center;
+    transition: width 0.25s ease, background 0.25s ease;
+    overflow: hidden;
 }
+
+.project-sidebar::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60px;
+    border-radius: 2px;
+    background: var(--border);
+    transition: opacity 0.25s ease;
+}
+
+.project-sidebar:hover {
+    width: 200px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+}
+
+.project-sidebar:hover::before {
+    opacity: 0;
+}
+
+.project-sidebar .category-btn {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, all 0.2s;
+    white-space: nowrap;
+}
+
+.project-sidebar:hover .category-btn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-sidebar:hover .category-btn:nth-child(1) { transition-delay: 0.05s; }
+.project-sidebar:hover .category-btn:nth-child(2) { transition-delay: 0.1s; }
+.project-sidebar:hover .category-btn:nth-child(3) { transition-delay: 0.15s; }
+.project-sidebar:hover .category-btn:nth-child(4) { transition-delay: 0.2s; }
 
 /* Projects */
 
