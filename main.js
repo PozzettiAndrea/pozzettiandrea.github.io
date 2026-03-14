@@ -217,6 +217,7 @@ document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.add('active');
         activeCategory = btn.dataset.category;
         displayRepos();
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
     });
 });
 
