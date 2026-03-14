@@ -278,8 +278,8 @@ h1 {
 }
 
 .project-thumb {
-    width: 200px;
-    min-height: 120px;
+    width: 320px;
+    min-height: 200px;
     flex-shrink: 0;
     overflow: hidden;
     background: var(--bg);
@@ -300,41 +300,42 @@ h1 {
 }
 
 .project-thumb-icon {
-    padding: 2rem;
+    padding: 3rem;
 }
 
 .project-thumb-icon svg {
-    width: 56px;
-    height: 56px;
+    width: 72px;
+    height: 72px;
     opacity: 0.5;
 }
 
 .project-info {
-    padding: 1.25rem;
+    padding: 2rem 2.5rem;
     display: flex;
     flex-direction: column;
     flex: 1;
+    justify-content: center;
 }
 
 .project-card h3 {
-    font-size: 0.95rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
     color: var(--text);
 }
 
 .project-card p {
-    font-size: 0.82rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
-    line-height: 1.5;
+    line-height: 1.7;
     flex: 1;
 }
 
 .project-meta {
     display: flex;
-    gap: 1rem;
-    margin-top: 0.75rem;
-    font-size: 0.75rem;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
 }
 
