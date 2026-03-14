@@ -38,35 +38,35 @@ const CATEGORIES = {
 // Minimum stars for comfyui-nodes
 const MIN_STARS_NODES = 30;
 
-// Thumbnail images per repo
+// Thumbnail images per repo — curated from README docs/assets
 const REPO_IMAGES = {
     // ComfyUI Nodes
-    'ComfyUI-SAM3': 'docs/bbox.png',
-    'ComfyUI-TRELLIS2': 'docs/tpose.png',
-    'ComfyUI-UniRig': 'docs/rigging_and_skinning.png',
-    'ComfyUI-DepthAnythingV3': 'docs/simple.png',
-    'ComfyUI-Sharp': 'https://pozzettiandrea.github.io/ComfyUI-Sharp/gallery-preview.png',
-    'ComfyUI-SAM3DBody': 'docs/body.png',
-    'ComfyUI-MotionCapture': 'https://pozzettiandrea.github.io/ComfyUI-MotionCapture/gallery-preview.png',
-    'ComfyUI-SAM3DObjects': 'https://pozzettiandrea.github.io/ComfyUI-SAM3DObjects/gallery-preview.png',
-    'ComfyUI-GeometryPack': 'https://pozzettiandrea.github.io/ComfyUI-GeometryPack/gallery-preview.png',
-    'ComfyUI-Hunyuan3D-Part': 'docs/teapot_segmentation.png',
-    'ComfyUI-Grounding': 'docs/simple.png',
-    'ComfyUI-CADabra': 'https://pozzettiandrea.github.io/ComfyUI-CADabra/gallery-preview.png',
-    'ComfyUI-MeshSegmenter': 'docs/samesh.png',
-    'ComfyUI-MIDI3D': 'docs/basic_workflow.png',
-    'ComfyUI-WaLa': 'docs/single_image.png',
-    'ComfyUI-PrimitiveAnything': 'docs/bun.png',
+    'ComfyUI-SAM3': 'docs/bbox.png',                    // workflow with bbox segmentation
+    'ComfyUI-TRELLIS2': 'docs/tpose.png',                // T-pose 3D generation workflow
+    'ComfyUI-UniRig': 'docs/rigging_and_skinning.png',   // rigging demo
+    'ComfyUI-DepthAnythingV3': 'docs/simple.png',        // depth estimation workflow
+    'ComfyUI-Sharp': 'docs/no_exif.png',                 // sharpening workflow
+    'ComfyUI-SAM3DBody': 'docs/body.png',                // body segmentation
+    'ComfyUI-SAM3DObjects': 'assets/elephant.png',       // segmented elephant cutout
+    'ComfyUI-Hunyuan3D-Part': 'docs/teapot_segmentation.png', // teapot part segmentation
+    'ComfyUI-Grounding': 'docs/simple.png',              // grounding workflow
+    'ComfyUI-MeshSegmenter': 'docs/samesh.png',          // mesh segmentation
+    'ComfyUI-MIDI3D': 'docs/basic_workflow.png',         // multi-instance 3D workflow
+    'ComfyUI-WaLa': 'docs/single_image.png',             // wavelet 3D generation
+    'ComfyUI-PrimitiveAnything': 'docs/bun.png',         // primitive decomposition
     // Python Bindings
-    'pygeogram': 'https://pozzettiandrea.github.io/pygeogram/preview.png',
-    'PyMesh': 'https://pozzettiandrea.github.io/PyMesh/preview.png',
-    'pypmp': 'https://pozzettiandrea.github.io/pypmp/preview.png',
-    'pyQuadriFlow': 'https://pozzettiandrea.github.io/pyQuadriFlow/preview.png',
-    'pyquadwild': 'https://pozzettiandrea.github.io/pyquadwild/preview.png',
+    'pygeogram': 'https://pozzettiandrea.github.io/pygeogram/preview.png',       // CVT remeshing before/after
+    'PyMesh': 'docs/_static/pymesh_teaser.jpg',                                   // bust with mesh processing stages
+    'pypmp': 'https://pozzettiandrea.github.io/pypmp/preview.png',               // uniform remesh before/after
+    'pyQuadriFlow': 'https://pozzettiandrea.github.io/pyQuadriFlow/preview.png', // tri-to-quad sphere
+    'pyquadwild': 'https://pozzettiandrea.github.io/pyquadwild/preview.png',     // quad remesh bunny
+    'libigl-python-bindings': 'tutorial/images/armadillo-marching-cubes.jpg',     // armadillo at 3 LODs
     // CUDA Ports
     'geogram-cuda': 'https://github.com/BrunoLevy/geogram/wiki/geogram_banner_2026_2.png',
-    'instant-meshes-cuda': 'https://github.com/wjakob/instant-meshes/raw/master/resources/screenshot.jpg',
-    'FlexGEMM-ap': 'https://raw.githubusercontent.com/PozzettiAndrea/FlexGEMM-ap/main/assets/benchmark_train_fp16.png',
+    'instant-meshes-cuda': 'https://github.com/wjakob/instant-meshes/raw/master/resources/screenshot.jpg', // quad remeshing UI
+    'pmp-library-cuda': 'docs/images/seam-aware-decimation.jpg',   // fish mesh decimation stages
+    'quadwild-bimdf-cuda': 'teaser.jpg',                            // paper teaser figure
+    'FlexGEMM-ap': 'assets/benchmark_train_fp16.png',              // benchmark chart
 };
 
 function imageUrl(repoName) {
