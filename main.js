@@ -1,19 +1,51 @@
-// Fetch pinned & top repos from GitHub API
 const USERNAME = 'PozzettiAndrea';
 
-// Pinned repos (hardcoded names since GitHub API doesn't expose pins without GraphQL)
-const PINNED = [
-    'ComfyUI-SAM3',
-    'ComfyUI-UniRig',
-    'ComfyUI-DepthAnythingV3',
-    'ComfyUI-SAM3DBody',
-    'ComfyUI-SAM3DObjects',
-    'ComfyUI-GeometryPack',
-];
+// Categorize repos
+const CATEGORIES = {
+    'comfyui-nodes': [
+        'ComfyUI-SAM3', 'ComfyUI-UniRig', 'ComfyUI-DepthAnythingV3',
+        'ComfyUI-SAM3DBody', 'ComfyUI-SAM3DObjects', 'ComfyUI-GeometryPack',
+        'ComfyUI-BGPSeg', 'ComfyUI-CADabra', 'ComfyUI-Cadrille',
+        'ComfyUI-CameraPack', 'ComfyUI-DetailGen3D', 'ComfyUI-Grounding',
+        'ComfyUI-Hunyuan3D-Part', 'ComfyUI-HunyuanX', 'ComfyUI-HyMotion',
+        'ComfyUI-Inspyrenet-Rembg-withcaching', 'ComfyUI-MeshSegmenter',
+        'ComfyUI-MIDI3D', 'ComfyUI-MotionCapture', 'ComfyUI-Multiband',
+        'ComfyUI-MVDUST3R', 'ComfyUI-NeurCADRecon', 'ComfyUI-Point2CAD',
+        'ComfyUI-PrimitiveAnything', 'ComfyUI-SECADNET', 'ComfyUI-Sharp',
+        'ComfyUI-TRELLIS2', 'ComfyUI-Trellis2-vbfork', 'ComfyUI-TripoSF',
+        'ComfyUI-UltraShape1', 'ComfyUI-WaLa', 'ComfyUI-WayPoint',
+        'ComfyUI-Weather', 'ComfyUI-SAM3-0.1.2', 'comfyui-sam3mirror',
+    ],
+    'comfyui-tools': [
+        'ComfyUI-3D_nodes_index', 'ComfyUI-Env-Manager', 'ComfyUI-PyVista',
+        'ComfyUI-Pulse-MeshAudit', 'ComfyUI-validate-endpoint',
+        'comfy-3d-viewers', 'comfy-aimdo', 'comfy-dev-cli',
+        'comfy-dynamic-widgets', 'comfy-env', 'comfy-sparse-attn',
+        'comfy-test', 'cookiecutter-comfy-extension',
+    ],
+    'python-bindings': [
+        'libigl-python-bindings', 'pygeogram', 'PyMesh', 'pypmp',
+        'pyQuadriFlow', 'pyquadwild', 'pyrxmesh', 'occt-rt-python',
+    ],
+    'cuda-ports': [
+        'geogram-cuda', 'instant-meshes-cuda', 'mmg-cuda',
+        'pmp-library-cuda', 'QuadriFlow-cuda', 'quadwild-bimdf-cuda',
+        'cuda-wheels', 'FlexGEMM-ap', 'OCCT-RT',
+    ],
+};
+
+// Build reverse lookup
+const repoCategory = {};
+for (const [cat, repos] of Object.entries(CATEGORIES)) {
+    for (const name of repos) {
+        repoCategory[name] = cat;
+    }
+}
 
 const grid = document.getElementById('project-grid');
+let allRepos = [];
+let activeCategory = 'all';
 
-// Show loading skeletons
 function showLoading() {
     grid.innerHTML = Array(6).fill('<div class="skeleton"></div>').join('');
 }
@@ -41,25 +73,57 @@ function renderCard(repo) {
     return card;
 }
 
+function displayRepos() {
+    const filtered = activeCategory === 'all'
+        ? allRepos
+        : allRepos.filter(r => repoCategory[r.name] === activeCategory);
+
+    grid.innerHTML = '';
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color: var(--text-muted);">No repos in this category yet.</p>';
+        return;
+    }
+    filtered.forEach(repo => grid.appendChild(renderCard(repo)));
+}
+
 async function loadProjects() {
     showLoading();
     try {
-        const res = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=stars&direction=desc`);
-        if (!res.ok) throw new Error('GitHub API error');
-        const repos = await res.json();
+        // Fetch up to 200 repos (2 pages)
+        const page1 = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=stars&direction=desc&page=1`);
+        if (!page1.ok) throw new Error('GitHub API error');
+        const repos1 = await page1.json();
 
-        // Show pinned repos first, then top starred ones
-        const pinned = PINNED.map(name => repos.find(r => r.name === name)).filter(Boolean);
-        const rest = repos.filter(r => !PINNED.includes(r.name)).slice(0, 6);
-        const display = [...pinned, ...rest].slice(0, 9);
+        let repos = repos1;
+        if (repos1.length === 100) {
+            const page2 = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=stars&direction=desc&page=2`);
+            if (page2.ok) {
+                const repos2 = await page2.json();
+                repos = [...repos1, ...repos2];
+            }
+        }
 
-        grid.innerHTML = '';
-        display.forEach(repo => grid.appendChild(renderCard(repo)));
+        // Only show categorized repos, sorted by stars
+        allRepos = repos
+            .filter(r => repoCategory[r.name])
+            .sort((a, b) => b.stargazers_count - a.stargazers_count);
+
+        displayRepos();
     } catch (err) {
         console.error('Failed to load repos:', err);
         grid.innerHTML = '<p style="color: var(--text-muted);">Could not load projects. <a href="https://github.com/PozzettiAndrea" style="color: var(--accent);">View on GitHub →</a></p>';
     }
 }
+
+// Category sidebar
+document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelector('.category-btn.active').classList.remove('active');
+        btn.classList.add('active');
+        activeCategory = btn.dataset.category;
+        displayRepos();
+    });
+});
 
 // Subtle animated background
 function initBackground() {

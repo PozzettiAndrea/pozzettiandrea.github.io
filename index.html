@@ -49,8 +49,17 @@
 
         <section id="projects">
             <h2>Projects</h2>
-            <div class="project-grid" id="project-grid">
-                <!-- Populated by JS -->
+            <div class="projects-layout">
+                <aside class="project-sidebar">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="comfyui-nodes">ComfyUI Nodes</button>
+                    <button class="category-btn" data-category="comfyui-tools">ComfyUI Tools</button>
+                    <button class="category-btn" data-category="python-bindings">Python Bindings</button>
+                    <button class="category-btn" data-category="cuda-ports">CUDA Ports</button>
+                </aside>
+                <div class="project-grid" id="project-grid">
+                    <!-- Populated by JS -->
+                </div>
             </div>
         </section>
 
