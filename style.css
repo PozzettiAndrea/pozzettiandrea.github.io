@@ -253,10 +253,9 @@ h1 {
 
 .project-grid {
     flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.25rem;
-    align-content: start;
 }
 
 .project-card {
@@ -267,7 +266,7 @@ h1 {
     color: inherit;
     transition: all 0.25s;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     overflow: hidden;
 }
 
@@ -279,8 +278,9 @@ h1 {
 }
 
 .project-thumb {
-    width: 100%;
-    height: 160px;
+    width: 200px;
+    min-height: 120px;
+    flex-shrink: 0;
     overflow: hidden;
     background: var(--bg);
     display: flex;
