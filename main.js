@@ -123,7 +123,7 @@ for (const [cat, repos] of Object.entries(CATEGORIES)) {
 
 const grid = document.getElementById('project-grid');
 let allRepos = [];
-let activeCategory = 'all';
+let activeCategory = 'comfyui-nodes';
 
 function showLoading() {
     grid.innerHTML = Array(6).fill('<div class="skeleton"></div>').join('');
