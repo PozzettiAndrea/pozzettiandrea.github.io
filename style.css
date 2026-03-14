@@ -106,8 +106,34 @@ h2 {
     padding-top: 5rem;
 }
 
+.hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+}
+
 .hero-content {
     max-width: 640px;
+    flex: 1;
+}
+
+.hero-image {
+    flex-shrink: 0;
+}
+
+.hero-image img {
+    width: 280px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.3s;
+}
+
+.hero-image img:hover {
+    border-color: var(--accent);
 }
 
 h1 {
@@ -318,6 +344,8 @@ footer {
     h1 { font-size: 2.25rem; }
     .nav-links { gap: 1rem; }
     .project-grid { grid-template-columns: 1fr; }
+    .hero-inner { flex-direction: column-reverse; gap: 2rem; }
+    .hero-image img { width: 200px; height: 240px; }
     .hero-links { flex-direction: column; }
     .btn { text-align: center; justify-content: center; }
     section { padding: 3rem 0; }
