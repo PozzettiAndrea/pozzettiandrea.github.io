@@ -209,12 +209,7 @@ h1 {
     line-height: 1.8;
 }
 
-/* Projects */
-.projects-layout {
-    display: flex;
-    gap: 2rem;
-}
-
+/* Project sidebar */
 .project-sidebar {
     position: fixed;
     left: 0;
@@ -225,8 +220,10 @@ h1 {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    z-index: 50;
+    z-index: 200;
 }
+
+/* Projects */
 
 .category-btn {
     background: transparent;
@@ -427,8 +424,7 @@ footer {
 @media (max-width: 768px) {
     h1 { font-size: 2.25rem; }
     .nav-links { gap: 1rem; }
-    .projects-layout { flex-direction: column; }
-    .project-sidebar { position: static; transform: none; width: 100%; flex-direction: row; flex-wrap: wrap; padding: 0; }
+    .project-sidebar { position: static; transform: none; width: 100%; flex-direction: row; flex-wrap: wrap; padding: 0.5rem; }
     .category-btn { flex: 1; min-width: fit-content; text-align: center; }
     .project-grid { grid-template-columns: 1fr; }
     .hero-inner { flex-direction: column-reverse; gap: 2rem; }
