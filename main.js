@@ -21,7 +21,7 @@ const CATEGORIES = {
         'ComfyUI-Pulse-MeshAudit', 'ComfyUI-validate-endpoint',
         'comfy-3d-viewers', 'comfy-aimdo', 'comfy-dev-cli',
         'comfy-dynamic-widgets', 'comfy-env', 'comfy-sparse-attn',
-        'comfy-test', 'cookiecutter-comfy-extension',
+        'comfy-test', 'cookiecutter-comfy-extension', 'cuda-wheels',
     ],
     'python-bindings': [
         'libigl-python-bindings', 'pygeogram', 'PyMesh', 'pypmp',
@@ -30,7 +30,7 @@ const CATEGORIES = {
     'cuda-ports': [
         'geogram-cuda', 'instant-meshes-cuda', 'mmg-cuda',
         'pmp-library-cuda', 'QuadriFlow-cuda', 'quadwild-bimdf-cuda',
-        'cuda-wheels', 'FlexGEMM-ap', 'OCCT-RT',
+        'FlexGEMM-ap', 'OCCT-RT',
     ],
 };
 
