@@ -123,8 +123,8 @@ h2 {
 }
 
 .hero-image img {
-    width: 280px;
-    height: 340px;
+    width: 160px;
+    height: 200px;
     object-fit: cover;
     border-radius: var(--radius);
     border: 2px solid var(--border);
@@ -392,7 +392,7 @@ footer {
     .category-btn { flex: 1; min-width: fit-content; text-align: center; }
     .project-grid { grid-template-columns: 1fr; }
     .hero-inner { flex-direction: column-reverse; gap: 2rem; }
-    .hero-image img { width: 200px; height: 240px; }
+    .hero-image img { width: 140px; height: 175px; }
     .hero-links { flex-direction: column; }
     .btn { text-align: center; justify-content: center; }
     section { padding: 3rem 0; }
