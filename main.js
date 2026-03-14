@@ -38,23 +38,35 @@ const CATEGORIES = {
 // Minimum stars for comfyui-nodes
 const MIN_STARS_NODES = 30;
 
-// First README image per repo (raw GitHub URLs)
+// Thumbnail images per repo
 const REPO_IMAGES = {
+    // ComfyUI Nodes
     'ComfyUI-SAM3': 'docs/bbox.png',
     'ComfyUI-TRELLIS2': 'docs/tpose.png',
     'ComfyUI-UniRig': 'docs/rigging_and_skinning.png',
     'ComfyUI-DepthAnythingV3': 'docs/simple.png',
-    'ComfyUI-Sharp': 'docs/no_exif.png',
+    'ComfyUI-Sharp': 'https://pozzettiandrea.github.io/ComfyUI-Sharp/gallery-preview.png',
     'ComfyUI-SAM3DBody': 'docs/body.png',
-    'ComfyUI-SAM3DObjects': null,
-    'ComfyUI-GeometryPack': null,
+    'ComfyUI-MotionCapture': 'https://pozzettiandrea.github.io/ComfyUI-MotionCapture/gallery-preview.png',
+    'ComfyUI-SAM3DObjects': 'https://pozzettiandrea.github.io/ComfyUI-SAM3DObjects/gallery-preview.png',
+    'ComfyUI-GeometryPack': 'https://pozzettiandrea.github.io/ComfyUI-GeometryPack/gallery-preview.png',
     'ComfyUI-Hunyuan3D-Part': 'docs/teapot_segmentation.png',
     'ComfyUI-Grounding': 'docs/simple.png',
+    'ComfyUI-CADabra': 'https://pozzettiandrea.github.io/ComfyUI-CADabra/gallery-preview.png',
     'ComfyUI-MeshSegmenter': 'docs/samesh.png',
     'ComfyUI-MIDI3D': 'docs/basic_workflow.png',
     'ComfyUI-WaLa': 'docs/single_image.png',
     'ComfyUI-PrimitiveAnything': 'docs/bun.png',
+    // Python Bindings
+    'pygeogram': 'https://pozzettiandrea.github.io/pygeogram/preview.png',
+    'PyMesh': 'https://pozzettiandrea.github.io/PyMesh/preview.png',
+    'pypmp': 'https://pozzettiandrea.github.io/pypmp/preview.png',
+    'pyQuadriFlow': 'https://pozzettiandrea.github.io/pyQuadriFlow/preview.png',
+    'pyquadwild': 'https://pozzettiandrea.github.io/pyquadwild/preview.png',
+    // CUDA Ports
+    'geogram-cuda': 'https://github.com/BrunoLevy/geogram/wiki/geogram_banner_2026_2.png',
     'instant-meshes-cuda': 'https://github.com/wjakob/instant-meshes/raw/master/resources/screenshot.jpg',
+    'FlexGEMM-ap': 'https://raw.githubusercontent.com/PozzettiAndrea/FlexGEMM-ap/main/assets/benchmark_train_fp16.png',
 };
 
 function imageUrl(repoName) {

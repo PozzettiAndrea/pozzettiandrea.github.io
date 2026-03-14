@@ -261,42 +261,43 @@ h1 {
 .project-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-bottom: none;
     text-decoration: none;
     color: inherit;
-    transition: all 0.25s;
+    transition: background 0.2s;
     display: flex;
     flex-direction: row;
-    overflow: hidden;
+    align-items: stretch;
+}
+
+.project-card:last-child {
+    border-bottom: 1px solid var(--border);
 }
 
 .project-card:hover {
     background: var(--bg-card-hover);
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .project-thumb {
-    width: 320px;
-    min-height: 200px;
+    width: 360px;
+    min-height: 240px;
     flex-shrink: 0;
     overflow: hidden;
     background: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
+    border-right: 1px solid var(--border);
 }
 
 .project-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s;
 }
 
 .project-card:hover .project-thumb img {
-    transform: scale(1.05);
+    /* no zoom — keep it clean */
 }
 
 .project-thumb-icon {
@@ -304,13 +305,13 @@ h1 {
 }
 
 .project-thumb-icon svg {
-    width: 72px;
-    height: 72px;
-    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    opacity: 0.4;
 }
 
 .project-info {
-    padding: 2rem 2.5rem;
+    padding: 2.5rem 3rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -318,24 +319,25 @@ h1 {
 }
 
 .project-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     color: var(--text);
 }
 
 .project-card p {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
-    line-height: 1.7;
-    flex: 1;
+    line-height: 1.8;
 }
 
 .project-meta {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 1.25rem;
-    font-size: 0.9rem;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
     color: var(--text-muted);
 }
 
